@@ -1,0 +1,14 @@
+.light {
+  background-color: white;
+  color: black;
+}
+
+.dark {
+  background-color: black;
+  color: white;
+}
+
+.agency {
+  background-color: #0078d4;
+  color: white;
+}
