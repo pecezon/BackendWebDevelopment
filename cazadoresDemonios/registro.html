@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Registro de Cazadores</title>
+  </head>
+  <body>
+    <h2>Ingreso de nuevo cazador</h2>
+
+    <form action="http://localhost:3000/ingresar" method="POST">
+      <label>nombre</label>
+      <input name="name" type="text" required />
+
+      <label>rango</label>
+      <input name="rango" type="text" required />
+
+      <label>estiloDeRespiracion</label>
+      <input name="estiloDeRespiracion" type="text" required />
+
+      <button type="submit">ingresar</button>
+    </form>
+
+    <p>Despues de enviar revisa /cazadores para ver el listado.</p>
+  </body>
+</html>
