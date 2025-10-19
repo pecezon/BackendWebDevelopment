@@ -1,0 +1,9 @@
+<% proyectos.forEach(proyecto => { %>
+<div>
+  <h2><%= proyecto.titulo %></h2>
+  <p><%= proyecto.descripcion %></p>
+  <p>Tecnología: <%= proyecto.tecnologia %></p>
+  <p>Autor: <%= proyecto.author %></p>
+  <a href="<%= proyecto.link %>">Ver Proyecto</a>
+</div>
+<% }); %>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sede del Cuerpo de Cazadores de Demonios</title>
+  </head>
+  <body>
+    <h1>Sede del Cuerpo de Cazadores de Demonios</h1>
+
+    <h2>Registrar Nuevo Cazador</h2>
+    <form action="/registrar" method="POST">
+      <input name="nombre" placeholder="Nombre" required />
+      <input name="respiracion" placeholder="Estilo de Respiración" required />
+      <button type="submit">Registrar</button>
+    </form>
+
+    <h2>Miembros Actuales:</h2>
+    <ul>
+      <% cazadores.forEach(cazador => { %>
+      <li>
+        <%= cazador.nombre %> - Respiración de la <%= cazador.respiracion %>
+      </li>
+      <% }) %>
+    </ul>
+  </body>
+</html>
