@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Panel de Servidores</title>
+  </head>
+  <body>
+    <h2>Panel de Administracion de Servidores</h2>
+    <form id="createForm">
+      <input id="name" placeholder="Nombre del servidor" required />
+      <button type="submit">Crear Servidor</button>
+    </form>
+    <div id="servers"></div>
+    <script>
+      var serversContainer = document.getElementById("servers");
+      var lastKey = "lastServerId";
+
+      async function apiCall(path, options) {
+        if (!options) options = {};
+        if (!options.headers) options.headers = {};
+        if (options.body) {
+          options.headers["Content-Type"] = "application/json";
+          options.body = JSON.stringify(options.body);
+        }
+        var response = await fetch(path, options);
+        if (response.ok) return await response.json();
+        var errorText = await response.text();
+        throw new Error(errorText);
+      }
+
+      function renderServers(servers) {
+        serversContainer.innerHTML = "";
+        var lastServerId = localStorage.getItem(lastKey);
+
+        if (servers.length === 0) {
+          serversContainer.innerHTML = "<p>No hay servidores creados</p>";
+          return;
+        }
+
+        for (var i = 0; i < servers.length; i++) {
+          var server = servers[i];
+          var div = document.createElement("div");
+          div.className = "item";
+
+          if (server.id === lastServerId) {
+            div.classList.add("highlight");
+          }
+
+          var info = document.createElement("div");
+          info.innerHTML =
+            "<h3>" + server.name + "</h3><p>Estado: " + server.state + "</p>";
+
+          var buttons = document.createElement("div");
+
+          var powerOnBtn = document.createElement("button");
+          powerOnBtn.textContent = "Encender";
+          powerOnBtn.onclick = function () {
+            handlePowerAction(server.id, "encender");
+          };
+
+          var powerOffBtn = document.createElement("button");
+          powerOffBtn.textContent = "Apagar";
+          powerOffBtn.onclick = function () {
+            handlePowerAction(server.id, "apagar");
+          };
+
+          var backupBtn = document.createElement("button");
+          backupBtn.textContent = "Backup";
+          backupBtn.onclick = function () {
+            handleBackup(server.id);
+          };
+
+          var viewLogLink = document.createElement("a");
+          viewLogLink.textContent = "Ver Log";
+          viewLogLink.href = "/logs/" + server.id + ".log";
+          viewLogLink.target = "_blank";
+
+          buttons.appendChild(powerOnBtn);
+          buttons.appendChild(powerOffBtn);
+          buttons.appendChild(backupBtn);
+          buttons.appendChild(viewLogLink);
+
+          div.appendChild(info);
+          div.appendChild(buttons);
+          serversContainer.appendChild(div);
+        }
+      }
+
+      async function handlePowerAction(serverId, action) {
+        try {
+          await apiCall("/api/servers/" + serverId + "/power", {
+            method: "POST",
+            body: { action: action },
+          });
+          localStorage.setItem(lastKey, serverId);
+          loadServers();
+        } catch (error) {
+          alert("Error: " + error.message);
+        }
+      }
+
+      async function handleBackup(serverId) {
+        try {
+          await apiCall("/api/servers/" + serverId + "/backup", {
+            method: "POST",
+          });
+          alert("Backup creado exitosamente");
+        } catch (error) {
+          alert("Error al crear backup: " + error.message);
+        }
+      }
+
+      async function loadServers() {
+        try {
+          var servers = await apiCall("/api/servers");
+          renderServers(servers);
+        } catch (error) {
+          console.error("Error cargando servidores:", error);
+        }
+      }
+
+      document.getElementById("createForm").onsubmit = async function (e) {
+        e.preventDefault();
+        var nameInput = document.getElementById("name");
+        var name = nameInput.value.trim();
+
+        if (name === "") return;
+
+        try {
+          await apiCall("/api/servers", {
+            method: "POST",
+            body: { name: name },
+          });
+          nameInput.value = "";
+          loadServers();
+        } catch (error) {
+          alert("Error creando servidor: " + error.message);
+        }
+      };
+
+      loadServers();
+    </script>
+  </body>
+</html>

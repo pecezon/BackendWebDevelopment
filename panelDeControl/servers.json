@@ -1,0 +1,72 @@
+{
+  "mgxcoso0jxvb": {
+    "id": "mgxcoso0jxvb",
+    "name": "lol",
+    "owner": "mgxcoso0g0ugqg",
+    "state": "apagado",
+    "logPath": "logs/mgxcoso0jxvb.log"
+  },
+  "mgxcozaprqbi": {
+    "id": "mgxcozaprqbi",
+    "name": "pedro",
+    "owner": "mgxcozape9z6py",
+    "state": "apagado",
+    "logPath": "logs/mgxcozaprqbi.log"
+  },
+  "mgxcsjy8wypa": {
+    "id": "mgxcsjy8wypa",
+    "name": "pedro",
+    "owner": "mgxcsjy87zbzhk",
+    "state": "apagado",
+    "logPath": "logs/mgxcsjy8wypa.log"
+  },
+  "mgxcuklo25uy": {
+    "id": "mgxcuklo25uy",
+    "name": "aa",
+    "owner": "mgxcuklnsql4fe",
+    "state": "apagado",
+    "logPath": "logs/mgxcuklo25uy.log"
+  },
+  "mgxcv4iy8h7t": {
+    "id": "mgxcv4iy8h7t",
+    "name": "zaa",
+    "owner": "mgxcv4iyqwn3hp",
+    "state": "apagado",
+    "logPath": "logs/mgxcv4iy8h7t.log"
+  },
+  "mgxcv5xajjv3": {
+    "id": "mgxcv5xajjv3",
+    "name": "da",
+    "owner": "mgxcv5xavz4dsw",
+    "state": "apagado",
+    "logPath": "logs/mgxcv5xajjv3.log"
+  },
+  "mgxd10ng00u3": {
+    "id": "mgxd10ng00u3",
+    "name": "perro milo",
+    "owner": "mgxd10ng28wmvm",
+    "state": "apagado",
+    "logPath": "logs/mgxd10ng00u3.log"
+  },
+  "mgxd4d1eetbq": {
+    "id": "mgxd4d1eetbq",
+    "name": "milo",
+    "owner": "mgxd4d1di42ve4",
+    "state": "apagado",
+    "logPath": "logs/mgxd4d1eetbq.log"
+  },
+  "mgxdgx7icb5w": {
+    "id": "mgxdgx7icb5w",
+    "name": "perro",
+    "owner": "mgxdgr2flnau4u",
+    "state": "encendido",
+    "logPath": "logs/mgxdgx7icb5w.log"
+  },
+  "mgxdhrep0mss": {
+    "id": "mgxdhrep0mss",
+    "name": "milo",
+    "owner": "mgxdgr2flnau4u",
+    "state": "apagado",
+    "logPath": "logs/mgxdhrep0mss.log"
+  }
+}
